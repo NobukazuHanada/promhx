@@ -86,13 +86,15 @@ class Promise<T> extends AsyncBase<T>{
     /**
       Resolves the given value for processing on any waiting functions.
      **/
-    /*override function handleResolve(val : T): Void {
+    #if !nodejs
+    override function handleResolve(val : T): Void {
         if (_resolved) {
             var msg = "Promise has already been resolved";
             throw(AlreadyResolved(msg));
         }
         _resolve(val);
-    }*/
+    }
+    #end
 
     /**
       add a wait function directly to the Promise instance.
